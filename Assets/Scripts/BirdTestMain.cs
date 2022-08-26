@@ -21,7 +21,7 @@ public class BirdTestMain : MonoBehaviour
             grounds[1].ShowPipes();
 
             grounds[0].gameObject.transform.localPosition = new Vector3(0, -5.7f , 0);
-            grounds[1].gameObject.transform.localPosition = new Vector3(25.34f, -5.7f , 0);
+            grounds[1].gameObject.transform.localPosition = new Vector3(24f, -5.7f , 0);
 
             if(showRedScreenRoutine == null)
                 showRedScreenRoutine = StartCoroutine(ShowRedScreenRoutine());

@@ -65,10 +65,10 @@ public class Ground : MonoBehaviour
     private void Update()
     {
         this.transform.Translate(Vector3.left * this.moveSpeed * Time.deltaTime);
-        if (this.transform.localPosition.x <= -25.34f)
+        if (this.transform.localPosition.x <= -24f)
         {
             var pos = this.transform.localPosition;
-            pos.x = 25.34f;
+            pos.x = 24f;
             this.transform.localPosition = pos;
 
             ShowPipes();
