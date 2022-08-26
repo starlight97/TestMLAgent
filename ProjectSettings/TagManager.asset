@@ -20,6 +20,7 @@ TagManager:
   - Goal
   - Box
   - Pipe
+  - Floor
   layers:
   - Default
   - TransparentFX
