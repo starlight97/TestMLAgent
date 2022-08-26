@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PipePair : MonoBehaviour
 {
-    // MAX 100
+    // MAX 115까지 가능하나 억까패턴때매 난이도 조절중
 
     private float[,] heightRange;
-    private static float MAX = 100f;
+   
+    private static float MAX = 80f;
     public Pipe pipeBottom;
     public Pipe pipeTop;
 
@@ -21,7 +22,7 @@ public class PipePair : MonoBehaviour
         this.heightRange[0, 1] = MAX;
         this.heightRange[1, 0] = 50f;
         this.heightRange[1, 1] = MAX;
-        this.heightRange[2, 0] = 70f;
+        this.heightRange[2, 0] = 60f;
         this.heightRange[2, 1] = MAX;
 
         this.pipeBottom.Init();
