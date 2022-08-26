@@ -19,15 +19,10 @@ public class Pipe : MonoBehaviour
     private int level;
     public void Init()
     {
-        mono = this.transform.parent.GetComponent<MonoBehaviour>();
-
+        mono = this.transform.root.Find("BirdTestMain").GetComponent<MonoBehaviour>();
 
     }
-    private void OnEnable()
-    {
-        if (mono != null)
-            SetSize(this.level);
-    }
+
     public void SetSize(float height)
     {
         this.mono.StartCoroutine(SetSizeRoutine(height));

@@ -24,11 +24,6 @@ public class PipePair : MonoBehaviour
         this.heightRange[2, 0] = 70f;
         this.heightRange[2, 1] = MAX;
 
-    }
-
-    private void Start()
-    {
-        this.Init();
         this.pipeBottom.Init();
         this.pipeTop.Init();
 
@@ -40,31 +35,21 @@ public class PipePair : MonoBehaviour
         {
             this.pipeTop.Show();
         };
+
     }
 
     public void SetSizePipePair(int level)
     {
         // 50 ~ 105
-        var height = Random.Range(this.heightRange[0, 0], this.heightRange[0, 1]);
-
+        var height = Random.Range(this.heightRange[level, 0], this.heightRange[level, 1]);
         // 50
         var bottomHeight = Random.Range(10f, height);
         // 115 - topHeight 
         // 50 - topHeight?
         var topHeight = height - bottomHeight;
 
-        Debug.Log(bottomHeight);
-        Debug.Log(topHeight);
         this.pipeBottom.SetSize(bottomHeight);
         this.pipeTop.SetSize(topHeight);
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            this.SetSizePipePair(0);
-        }
     }
 
     public void Show(int level)

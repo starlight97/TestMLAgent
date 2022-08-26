@@ -6,7 +6,7 @@ public class Ground : MonoBehaviour
 {
     public float moveSpeed;
 
-    public Pipe[] arrPipes;
+    public PipePair[] arrPipePairs;
 
     private int level;
 
@@ -16,9 +16,9 @@ public class Ground : MonoBehaviour
     public bool isShow;
     void Start()
     {
-        foreach (var pipe in arrPipes)
+        foreach (var pipePair in arrPipePairs)
         {
-            pipe.Init();
+            pipePair.Init();
         }
 
         if (this.isShow)
@@ -29,9 +29,9 @@ public class Ground : MonoBehaviour
 
     public void HidePipes()
     {
-        foreach (var pipe in arrPipes)
+        foreach (var pipePair in arrPipePairs)
         {
-            pipe.Hide();
+            pipePair.Hide();
         }
     }
 
@@ -39,9 +39,9 @@ public class Ground : MonoBehaviour
 
     public void ShowPipes()
     {
-        foreach (var pipe in arrPipes)
+        foreach (var pipePair in arrPipePairs)
         {
-            //pipe.Show(this.level);
+            pipePair.SetSizePipePair(this.level);
         }
     }
 
@@ -50,17 +50,29 @@ public class Ground : MonoBehaviour
         this.level = level;
     }
 
-    
-    void Update()
+    //private void FixedUpdate()
+    //{        
+    //    this.transform.Translate(Vector3.left * this.moveSpeed * Time.fixedDeltaTime);
+    //    if (this.transform.localPosition.x <= -24.04f)
+    //    {
+    //        var pos = this.transform.localPosition;
+    //        pos.x = 24.04f;
+    //        this.transform.localPosition = pos;
+
+    //        ShowPipes();
+    //    }
+    //}
+    private void Update()
     {
         this.transform.Translate(Vector3.left * this.moveSpeed * Time.deltaTime);
-        if(this.transform.localPosition.x <= -22.0f)
+        if (this.transform.localPosition.x <= -24.04f)
         {
             var pos = this.transform.localPosition;
-            pos.x = 20f;
+            pos.x = 24.04f;
             this.transform.localPosition = pos;
 
             ShowPipes();
         }
     }
+
 }

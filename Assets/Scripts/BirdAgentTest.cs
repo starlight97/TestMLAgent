@@ -13,6 +13,7 @@ public class BirdAgentTest : Agent
     public float jumpForce;
     public UnityAction onDie;
     public UnityAction<int> onSetLevel;
+    
     EnvironmentParameters m_ResetParams;
     //private float jumpCoolTime = 0.2f;
     //private Coroutine jumpCoolTimeRoutine;
@@ -70,6 +71,7 @@ public class BirdAgentTest : Agent
         AddReward(0.1f);
     }
 
+    private int isJump;
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
@@ -83,7 +85,11 @@ public class BirdAgentTest : Agent
             discreteActions[0] = 0;
         }
 
+        this.onSetLevel(0);
+
     }
+
+
 
     private void Jump()
     {

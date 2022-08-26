@@ -5,9 +5,10 @@ using UnityEngine;
 public class BirdTestMain : MonoBehaviour
 {
     private BirdAgentTest birdAgentTest;
-
+    public GameObject redScrrenGo;
     public Ground[] grounds;
 
+    private Coroutine showRedScreenRoutine;
     void Start()
     {
         this.birdAgentTest = transform.parent.transform.Find("BirdAgent").GetComponent<BirdAgentTest>();
@@ -20,7 +21,10 @@ public class BirdTestMain : MonoBehaviour
             grounds[1].ShowPipes();
 
             grounds[0].gameObject.transform.localPosition = new Vector3(0, -5.7f , 0);
-            grounds[1].gameObject.transform.localPosition = new Vector3(21, -5.7f , 0);
+            grounds[1].gameObject.transform.localPosition = new Vector3(24.04f, -5.7f , 0);
+
+            if(showRedScreenRoutine == null)
+                showRedScreenRoutine = StartCoroutine(ShowRedScreenRoutine());
         };
 
         this.birdAgentTest.onSetLevel = (level)=>
@@ -30,6 +34,15 @@ public class BirdTestMain : MonoBehaviour
                 ground.SetLevel(level);
             }
         };
+
+    }
+
+    private IEnumerator ShowRedScreenRoutine()
+    {
+        this.redScrrenGo.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        this.redScrrenGo.SetActive(false);
+        showRedScreenRoutine = null;
 
     }
 }
