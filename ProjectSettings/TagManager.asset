@@ -19,6 +19,7 @@ TagManager:
   - walkableSurface
   - Goal
   - Box
+  - Pipe
   layers:
   - Default
   - TransparentFX
