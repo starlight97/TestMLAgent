@@ -41,7 +41,7 @@ public class Ground : MonoBehaviour
     {
         foreach (var pipe in arrPipes)
         {
-            pipe.Show(this.level);
+            //pipe.Show(this.level);
         }
     }
 

@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pipe : MonoBehaviour
 {
     public enum eDirType { Up = 1, Down = -1}
 
-    private float[,] heightRange; 
-
     public GameObject headGo;
     public GameObject bodyGo;
     public eDirType dirType;
+
+    public UnityAction onSetSizeComplete;
     private Bounds bodyBounds;
 
     private BoxCollider2D col2D;
@@ -21,36 +21,39 @@ public class Pipe : MonoBehaviour
     {
         mono = this.transform.parent.GetComponent<MonoBehaviour>();
 
-        this.heightRange = new float[3, 2];
-        this.heightRange[0, 0] = 10f;
-        this.heightRange[0, 1] = 30f;
-        this.heightRange[1, 0] = 30f;
-        this.heightRange[1, 1] = 40f;
-        this.heightRange[2, 0] = 40f;
-        this.heightRange[2, 1] = 55f;
 
     }
     private void OnEnable()
     {
         if (mono != null)
-            Show(this.level);
+            SetSize(this.level);
     }
-    public void Show(int level)
+    public void SetSize(float height)
     {
-        this.mono.StartCoroutine(ShowRoutine(level));
+        this.mono.StartCoroutine(SetSizeRoutine(height));
     }
     public void Hide()
     {
         this.gameObject.SetActive(false);
     }
+    public void Show()
+    {
+        this.gameObject.SetActive(true);
+    }
 
-    private IEnumerator ShowRoutine(int level)
+    private IEnumerator SetSizeRoutine(float height)
     {
         var localScale = this.bodyGo.transform.localScale;
-        var randHeight =  Random.Range(this.heightRange[level,0], this.heightRange[level, 1]);
-        localScale.y = (int)this.dirType * randHeight;
+        localScale.y = (int)this.dirType * height;
 
         this.bodyGo.transform.localScale = localScale;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
         yield return null;
 
         //yield return new WaitForSeconds(0.01f);
@@ -60,7 +63,6 @@ public class Pipe : MonoBehaviour
         var headPos = this.headGo.transform.localPosition;
         headPos.y = headPosY;
         this.headGo.transform.localPosition = headPos;
-
-        this.gameObject.SetActive(true);
+        this.onSetSizeComplete();
     }
 }
