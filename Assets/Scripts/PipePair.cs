@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PipePair : MonoBehaviour
 {
-    // MAX 115까지 가능하나 억까패턴때매 난이도 조절중
+    // MAX 115까지 맵에 표시가능
 
     private float[,] heightRange;
    
@@ -13,6 +13,7 @@ public class PipePair : MonoBehaviour
     public Pipe pipeTop;
 
     private MonoBehaviour mono;
+    private int level;
     public void Init()
     {
         mono = this.transform.root.GetComponent<MonoBehaviour>();
@@ -28,15 +29,11 @@ public class PipePair : MonoBehaviour
         this.pipeBottom.Init();
         this.pipeTop.Init();
 
-        this.pipeBottom.onSetSizeComplete = () =>
-        {
-            this.pipeBottom.Show();
-        };
-        this.pipeTop.onSetSizeComplete = () =>
-        {
-            this.pipeTop.Show();
-        };
-
+    }
+    public void ShowPipePair()
+    {
+        this.pipeBottom.Show();
+        this.pipeTop.Show();
     }
 
     public void SetSizePipePair(int level)
@@ -51,6 +48,7 @@ public class PipePair : MonoBehaviour
 
         this.pipeBottom.SetSize(bottomHeight);
         this.pipeTop.SetSize(topHeight);
+        this.level = level;
     }
 
     public void Show(int level)

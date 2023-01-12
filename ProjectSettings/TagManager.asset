@@ -21,15 +21,16 @@ TagManager:
   - Box
   - Pipe
   - Floor
+  - Hole
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hole
   - Water
   - UI
   - Agent
-  - 
+  - Floor
   - 
   - 
   - 

@@ -8,19 +8,21 @@ namespace CooKieRunTest
     {
         public float moveSpeed;
         public GameObject[] floorGos;
+        public GameObject[] floorGos2;
 
         private void Update()
         {
             this.transform.Translate(Vector3.left * this.moveSpeed * Time.deltaTime);
-            if (this.transform.localPosition.x <= -28f)
+            if (this.transform.localPosition.x <= -18.85f)
             {
-                var pos = this.transform.localPosition;
-                pos.x = 28f;
-                this.transform.localPosition = pos;
+                var pos = new Vector3(18.85f * 2, 0, 0);
+                this.transform.Translate(pos);
 
                 ShowFloors();
                 HideFloor();
             }
+
+
         }
 
         private void ShowFloors()

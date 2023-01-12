@@ -5089,10 +5089,10 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 375a5a124d42ff448a95ee87a8480f16, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: BirdAgentTest3
+  m_BehaviorName: BirdAgentTest
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -5971,6 +5971,7 @@ MonoBehaviour:
   grounds:
   - {fileID: 5439722359398054383}
   - {fileID: 521295008008490543}
+  textTime: {fileID: 0}
 --- !u!1 &5439722359184584383
 GameObject:
   m_ObjectHideFlags: 0

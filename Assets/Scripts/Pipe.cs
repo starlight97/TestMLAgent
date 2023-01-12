@@ -10,13 +10,10 @@ public class Pipe : MonoBehaviour
     public GameObject bodyGo;
     public eDirType dirType;
 
-    public UnityAction onSetSizeComplete;
     private Bounds bodyBounds;
 
-    private BoxCollider2D col2D;
-
     private MonoBehaviour mono;
-    private int level;
+
     public void Init()
     {
         mono = this.transform.root.Find("BirdTestMain").GetComponent<MonoBehaviour>();
@@ -39,16 +36,10 @@ public class Pipe : MonoBehaviour
     private IEnumerator SetSizeRoutine(float height)
     {
         var localScale = this.bodyGo.transform.localScale;
+
         localScale.y = (int)this.dirType * height;
 
         this.bodyGo.transform.localScale = localScale;
-        yield return null;
-        yield return null;
-        yield return null;
-        yield return null;
-        yield return null;
-        yield return null;
-        yield return null;
         yield return null;
 
         //yield return new WaitForSeconds(0.01f);
@@ -58,6 +49,6 @@ public class Pipe : MonoBehaviour
         var headPos = this.headGo.transform.localPosition;
         headPos.y = headPosY;
         this.headGo.transform.localPosition = headPos;
-        this.onSetSizeComplete();
+        this.bodyBounds = this.bodyGo.GetComponent<BoxCollider2D>().bounds;
     }
 }

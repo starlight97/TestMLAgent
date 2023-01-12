@@ -28,6 +28,20 @@ namespace CooKieRunTest
             {
                 this.Jump();
             }
+            HoleCheck();
+        }
+
+        private void HoleCheck()
+        {
+            //var ray = new Ray(this.transform.position + new Vector3(0, length, 0), Vector3.down);
+            //Debug.DrawRay(ray.origin, ray.direction * 7f, Color.red, 0.5f);
+            //RaycastHit2D raycastHit = Physics2D.Raycast(this.transform.position + new Vector3(0, length, 0), Vector3.down, 7f);  
+
+            //if (raycastHit.collider !=null)
+            //{
+            //    Debug.Log(raycastHit.collider.name);
+            //    Debug.Log(raycastHit.collider.tag);
+            //}
         }
 
         private void Jump()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.MLAgents;
@@ -15,10 +13,7 @@ public class BirdAgentTest : Agent
     public UnityAction<int> onSetLevel;
     
     EnvironmentParameters m_ResetParams;
-    //private float jumpCoolTime = 0.2f;
-    //private Coroutine jumpCoolTimeRoutine;
-
-    // Start is called before the first frame update
+    private int isJump;
     void Start()
     {
         this.rBody = this.GetComponent<Rigidbody2D>();
@@ -35,7 +30,6 @@ public class BirdAgentTest : Agent
     public override void OnEpisodeBegin()
     {
         Init();
-
     }
     public override void Initialize()
     {
@@ -46,7 +40,6 @@ public class BirdAgentTest : Agent
     {
         // °üÂû
         sensor.AddObservation(this.transform.localPosition.y);    // ³»À§Ä¡ 1
-
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -71,7 +64,7 @@ public class BirdAgentTest : Agent
         AddReward(0.1f);
     }
 
-    private int isJump;
+
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
@@ -84,29 +77,25 @@ public class BirdAgentTest : Agent
         {
             discreteActions[0] = 0;
         }
-
         this.onSetLevel(0);
-
     }
-
-
 
     private void Jump()
     {
         this.rBody.velocity = Vector3.up * this.jumpForce; 
     }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        this.Die();
-        
-    }
-
     private void Die()
     {
         AddReward(-1f);
         this.onDie();
         EndEpisode();
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        this.Die();        
+    }
+
+
 }

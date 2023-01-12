@@ -33,6 +33,7 @@ public class Ground : MonoBehaviour
         {
             pipePair.Hide();
         }
+
     }
 
 
@@ -41,6 +42,7 @@ public class Ground : MonoBehaviour
     {
         foreach (var pipePair in arrPipePairs)
         {
+            pipePair.ShowPipePair();
             pipePair.SetSizePipePair(this.level);
         }
     }
